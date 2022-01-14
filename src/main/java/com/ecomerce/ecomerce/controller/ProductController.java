@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -28,8 +29,11 @@ public class ProductController {
         return "Ejemplo de respuesta";
     }
 
-    @GetMapping("/api/all")
-    public List<Product> getProductsAll() {
+    @GetMapping("/api/productos")
+    public List<Product> getProductsAll() throws ApiRestException {
+        if (data.size() == 0){
+            throw new ApiRestException("No hay productos cargados");
+        }
         logger.info("GET Request recibido string");
         return dataProductos();
     }
@@ -49,6 +53,15 @@ public class ProductController {
         if(id == 0) {
             throw new ApiRestException("El identificador del mensaje debe ser mayor a 0");
         }
+        boolean aux=false;
+        for (int i=0; i<this.data.size();i++){
+            if (id == data.get(i).getId()) {
+                aux=true;
+            }
+        }
+        if (aux == false){
+            throw new ApiRestException("Producto no encontrado");
+        }
         var msjFiltered = dataProductos().stream()
                 .filter(products -> Objects.equals(products.getId(), id));
         return msjFiltered.findFirst().orElse(new Product(0L, "No existe el producto",0L));
@@ -57,15 +70,17 @@ public class ProductController {
     @PostMapping("/api/productos")
     public Product createProduct(@RequestBody Product product) {
         logger.info("POST Request recibido");
-        return product;
+        Product aux = new Product(contador+1,product.getDescription(),product.getPrice());
+        data.add(aux);
+        contador++;
+        return aux;
     }
 
+    private ArrayList<Product> data = new ArrayList<>();
 
+    private long contador=0;
 
     private List<Product> dataProductos() {
-        return List.of(
-                new Product(1L, "Producto-1", 100L),
-                new Product(2L, "Producto-2", 200L)
-        );
+        return this.data;
     }
 }
