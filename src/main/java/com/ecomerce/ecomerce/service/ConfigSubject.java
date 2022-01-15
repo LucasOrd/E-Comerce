@@ -1,4 +1,5 @@
 package com.ecomerce.ecomerce.service;
+import com.ecomerce.ecomerce.handle.ApiRestException;
 import com.ecomerce.ecomerce.utils.ConfigObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,13 @@ public class ConfigSubject {
     public void notifyObservers(Object event) {
         synchronized (observers) {
             logger.info("Se notifica a los observadores");
-            observers.forEach(observer -> observer.updateConfig(event));
+            observers.forEach(observer -> {
+                try {
+                    observer.updateConfig(event);
+                } catch (ApiRestException e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 }

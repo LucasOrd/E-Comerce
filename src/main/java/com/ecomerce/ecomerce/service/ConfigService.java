@@ -15,8 +15,9 @@ public class ConfigService {
     private String userRol;
 
     public void updateUserConfig(String userRolParam) {
+
         userRol = userRolParam;
-        configSubject.notifyObservers(ConfigType.USER);//Se aplica el patron
+        configSubject.notifyObservers(ConfigType.USER);
     }
 
     public String getUserRol() {
@@ -24,6 +25,7 @@ public class ConfigService {
     }
 
     public void setUserRol(String userRol) {
+
         this.userRol = userRol;
     }
 

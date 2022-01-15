@@ -24,11 +24,16 @@ public class UserConfigConcrete implements InitializingBean, ConfigObserver {
 
     @Override
     public void updateConfig(Object event) {
-        logger.info("Actualiza el config");
+        logger.info("Actualiza el rol");
         if (event.equals(ConfigType.USER)) {
             this.rol = configService.getUserRol();
             logger.info("Rol nuevo {}", this.rol);
         }
+    }
+
+    @Override
+    public void deleteConfig(Object event) {
+        logger.info("Borra un usuario");
     }
 
     @Override
