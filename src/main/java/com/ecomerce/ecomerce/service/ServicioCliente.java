@@ -2,22 +2,20 @@ package com.ecomerce.ecomerce.service;
 
 import com.ecomerce.ecomerce.utils.ConfigType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConfigService {
+public class ServicioCliente {
 
     @Autowired
-    ConfigSubject configSubject;
+    ObservadorCliente observadorCliente;
 
-    @Value(value = "${user.test.rol}")
     private String userRol;
 
     public void updateUserConfig(String userRolParam) {
 
         userRol = userRolParam;
-        configSubject.notifyObservers(ConfigType.USER);
+        observadorCliente.notifyObservers(ConfigType.USER);
     }
 
     public String getUserRol() {

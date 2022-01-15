@@ -13,8 +13,6 @@ public class EComerceApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(EComerceApplication.class, args);
-		//EComerceApplication aux = new EComerceApplication();
-		//aux.runMe("test");
 	}
 
 	private void runMe(String parameter) {

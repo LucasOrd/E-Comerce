@@ -1,6 +1,6 @@
 package com.ecomerce.ecomerce.model;
 
-public class User {
+public class Cliente {
 
     private Long id;
     private String name;
@@ -9,7 +9,13 @@ public class User {
     private String email;
     private Long phone;
 
-    public User(Long id, String rol ,String email, Long phone) {
+
+    public Cliente(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Cliente(Long id, String rol , String email, Long phone) {
         this.id=id;
         this.rol=rol;
         this.email=email;
@@ -40,10 +46,6 @@ public class User {
         this.phone = phone;
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
 
     public int getAge() {
         return age;

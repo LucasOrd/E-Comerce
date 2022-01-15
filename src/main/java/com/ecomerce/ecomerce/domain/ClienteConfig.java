@@ -1,10 +1,10 @@
 package com.ecomerce.ecomerce.domain;
 
-public class UserConfig {
+public class ClienteConfig {
 
     private String rol;
 
-    public UserConfig() {
+    public ClienteConfig() {
     }
 
     public void setRol(String rol) {

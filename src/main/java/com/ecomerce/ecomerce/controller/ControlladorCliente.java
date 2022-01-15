@@ -1,9 +1,9 @@
 package com.ecomerce.ecomerce.controller;
 
-import com.ecomerce.ecomerce.domain.UserConfig;
+import com.ecomerce.ecomerce.domain.ClienteConfig;
 import com.ecomerce.ecomerce.handle.ApiRestException;
-import com.ecomerce.ecomerce.model.User;
-import com.ecomerce.ecomerce.service.ConfigService;
+import com.ecomerce.ecomerce.model.Cliente;
+import com.ecomerce.ecomerce.service.ServicioCliente;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,35 +13,35 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/e-comerce/api/config")
-public class ConfigController {
+public class ControlladorCliente {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfigController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ControlladorCliente.class);
 
     @Autowired
-    ConfigService configService;
+    ServicioCliente servicioCliente;
 
     @GetMapping("/users/all")
-    public ArrayList<User> getUsersAll() {
+    public ArrayList<Cliente> getUsersAll() {
         logger.info("GET Request recibido string");
         //solo para que no este vacio
-        User aux = new User (10L,"programer","lucas",1234L);
-        this.dataUsers.add(aux);
-        return dataUsers;
+        Cliente aux = new Cliente(10L,"programer","lucas",1234L);
+        this.dataClientes.add(aux);
+        return dataClientes;
     }
 
-    private ArrayList<User> dataUsers= new ArrayList<>();
+    private ArrayList<Cliente> dataClientes = new ArrayList<>();
 
     @PutMapping("/users")
-    UserConfig updateConfig(@RequestBody UserConfig userConfig) {
+    ClienteConfig updateConfig(@RequestBody ClienteConfig clienteConfig) {
         logger.info("PUT Request recibido");
-        configService.updateUserConfig(userConfig.getRol());
-        return userConfig;
+        servicioCliente.updateUserConfig(clienteConfig.getRol());
+        return clienteConfig;
     }
 
     @PostMapping("/users")
-    public User createUser(@RequestBody User user) {
+    public Cliente createUser(@RequestBody Cliente cliente) {
         logger.info("POST Request recibido");
-        return user;
+        return cliente;
     }
 
     @DeleteMapping("/users/{id}")

@@ -1,5 +1,5 @@
 package com.ecomerce.ecomerce.service;
-import com.ecomerce.ecomerce.handle.ApiRestException;
+
 import com.ecomerce.ecomerce.utils.ConfigObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class ConfigSubject {
+public class ObservadorCliente {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfigSubject.class);
+    private static final Logger logger = LoggerFactory.getLogger(ObservadorCliente.class);
 
     private final Set<ConfigObserver> observers;
 
-    public ConfigSubject() {
+    public ObservadorCliente() {
         observers = Collections.synchronizedSet(new HashSet<>());
     }
 
@@ -36,7 +36,7 @@ public class ConfigSubject {
             observers.forEach(observer -> {
                 try {
                     observer.updateConfig(event);
-                } catch (ApiRestException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             });

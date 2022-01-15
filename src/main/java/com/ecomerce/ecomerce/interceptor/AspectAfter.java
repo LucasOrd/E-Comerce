@@ -12,15 +12,15 @@ public class AspectAfter {
 
     Logger logger = LogManager.getLogger(AspectAfter.class);
 
-    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ConfigController.updateConfig(..))")
+    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ControlladorCliente.updateConfig(..))")
     void alTerminarMetodoUpdate() {
     }
 
-    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ConfigController.deleteUser(..))")
+    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ControlladorCliente.deleteUser(..))")
     void alTerminarMetodoDelete() {
     }
 
-    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ConfigController.updateConfig(..))")
+    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ControlladorCliente.updateConfig(..))")
     void alTerminarHacerMalUnUpdate() {
     }
 

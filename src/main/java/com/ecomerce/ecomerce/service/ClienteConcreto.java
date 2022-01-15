@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserConfigConcrete implements InitializingBean, ConfigObserver {
+public class ClienteConcreto implements InitializingBean, ConfigObserver {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserConfigConcrete.class);
+    private static final Logger logger = LoggerFactory.getLogger(ClienteConcreto.class);
 
     @Autowired
-    ConfigSubject configSubject;
+    ObservadorCliente observadorCliente;
     @Autowired
-    ConfigService configService;
+    ServicioCliente servicioCliente;
 
     private int id;
     private String name;
@@ -26,7 +26,7 @@ public class UserConfigConcrete implements InitializingBean, ConfigObserver {
     public void updateConfig(Object event) {
         logger.info("Actualiza el rol");
         if (event.equals(ConfigType.USER)) {
-            this.rol = configService.getUserRol();
+            this.rol = servicioCliente.getUserRol();
             logger.info("Rol nuevo {}", this.rol);
         }
     }
@@ -38,7 +38,7 @@ public class UserConfigConcrete implements InitializingBean, ConfigObserver {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        configSubject.addObserver(this);
+        observadorCliente.addObserver(this);
     }
 
 

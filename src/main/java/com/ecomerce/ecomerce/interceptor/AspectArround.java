@@ -16,10 +16,7 @@ public class AspectArround {
 
     Logger logger = LogManager.getLogger(AspectArround.class);
 
-//    @Pointcut("execution(* com.coderhouse.controller.MessageController.*(..))")
-//    @Pointcut("@within(org.springframework.web.bind.annotation.RestController)")
-//    @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
-    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ConfigController.*(..)) && !execution(* com.ecomerce.ecomerce.controller.ConfigController.deleteUser(..))")
+    @Pointcut("execution(* com.ecomerce.ecomerce.controller.ControlladorCliente.*(..)) && !execution(* com.ecomerce.ecomerce.controller.ControlladorCliente.deleteUser(..))")
     void controllerClassMethods() {}
 
     @Around("controllerClassMethods()")
