@@ -10,11 +10,6 @@ public class Cliente {
     private Long phone;
 
 
-    public Cliente(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
     public Cliente(Long id, String rol , String email, Long phone) {
         this.id=id;
         this.rol=rol;
