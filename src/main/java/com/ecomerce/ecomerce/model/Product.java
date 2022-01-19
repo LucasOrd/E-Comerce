@@ -1,7 +1,13 @@
 package com.ecomerce.ecomerce.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.Id;
+
+@Document("producto")
 public class Product {
 
+    @Id
     private Long id;
     private String title;
     private Long price;
