@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/e-comerce")
+@RequestMapping("/coder-house")
 public class MensajesController {
 
     Logger logger = LogManager.getLogger(MensajesController.class);
@@ -23,7 +23,7 @@ public class MensajesController {
     @GetMapping("/mensajes/example")
     public String getMensajesString() {
         logger.info("GET Request recibido string");
-        return "Ejemplo de respuesta";
+        return "Ejemplo de respuesta puerto 8082";
     }
 
     @GetMapping("/mensajes/all")
@@ -78,9 +78,126 @@ public class MensajesController {
 
 
     private List<Mensaje> dataMensajes() {
-        return List.of(
-                new Mensaje(1L, "Prueba-1"),
-                new Mensaje(2L, "Prueba-2")
-        );
+        List<Mensaje> aux = new List<Mensaje>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return false;
+            }
+
+            @Override
+            public Iterator<Mensaje> iterator() {
+                return null;
+            }
+
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @Override
+            public <T> T[] toArray(T[] a) {
+                return null;
+            }
+
+            @Override
+            public boolean add(Mensaje mensaje) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends Mensaje> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(int index, Collection<? extends Mensaje> c) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public Mensaje get(int index) {
+                return null;
+            }
+
+            @Override
+            public Mensaje set(int index, Mensaje element) {
+                return null;
+            }
+
+            @Override
+            public void add(int index, Mensaje element) {
+
+            }
+
+            @Override
+            public Mensaje remove(int index) {
+                return null;
+            }
+
+            @Override
+            public int indexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public int lastIndexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public ListIterator<Mensaje> listIterator() {
+                return null;
+            }
+
+            @Override
+            public ListIterator<Mensaje> listIterator(int index) {
+                return null;
+            }
+
+            @Override
+            public List<Mensaje> subList(int fromIndex, int toIndex) {
+                return null;
+            }
+        };
+        aux.add(new Mensaje(1L, "Prueba-1"));
+        aux.add(new Mensaje(2L, "Prueba-2"));
+        return aux;
+
+
     }
 }

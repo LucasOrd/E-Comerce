@@ -15,17 +15,4 @@ public class EComerceApplication {
 		SpringApplication.run(EComerceApplication.class, args);
 	}
 
-	private void runMe(String parameter) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("This is debug : {} ", parameter);
-		}
-
-		if (logger.isInfoEnabled()) {
-			logger.info("This is info : {} ", parameter);
-		}
-
-		logger.warn("This is warn : {} ", parameter);
-		logger.error("This is error : {} ", parameter);
-	}
-
 }

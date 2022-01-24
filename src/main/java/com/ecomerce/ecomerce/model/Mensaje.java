@@ -9,6 +9,8 @@ public class Mensaje {
         this.description = description;
     }
 
+    public Mensaje() {}
+
     public void setId(Long id) {
         this.id = id;
     }
